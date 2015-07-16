@@ -1,0 +1,14 @@
+{-# OPTIONS_GHC -sig-of ghc-prim:GHC.Prim #-}
+
+{-# LANGUAGE MagicHash #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE PackageImports #-}
+{-# LANGUAGE QuasiQuotes #-}
+
+module GHC.Prim (module GHC.Prim) where
+
+import "ghc-prim" GHC.Prim
+import LiquidHaskell
+
+[lq| embed Int# as int |]
+

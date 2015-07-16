@@ -1,0 +1,18 @@
+{-# OPTIONS_GHC -sig-of ghc-prim:GHC.Types #-}
+
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE MagicHash #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE PackageImports #-}
+{-# LANGUAGE QuasiQuotes #-}
+
+module GHC.Types (module GHC.Types) where
+
+import "ghc-prim" GHC.Types hiding (Int)
+import LiquidHaskell
+
+import GHC.Exts (Int#)
+
+data Int where
+  I# :: [lq| x:Int# -> { v:Int | v = x } |]
+
