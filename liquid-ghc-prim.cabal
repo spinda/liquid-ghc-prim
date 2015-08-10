@@ -7,19 +7,21 @@ license-file:        LICENSE
 author:              Michael Smith
 maintainer:          michael@diglumi.com
 category:            LiquidHaskell
-build-type:          Simple
+build-type:          Custom
 cabal-version:       >=1.10
 
 library
   exposed:             False
-  exposed-modules:     GHC.Prim,
-                       GHC.Types
+  exposed-modules:     Liquid.GHC.Prim,
+                       Liquid.GHC.Types
   build-depends:       base >=4.8 && <4.9,
                        ghc-prim >=0.4 && <0.5,
-                       liquidhaskell,
-                       liquidhaskell-lang
+                       liquidhaskell
   hs-source-dirs:      src
   default-language:    Haskell2010
   ghc-options:         -fplugin=LiquidHaskell.Plugin
-                       -fplugin-opt=LiquidHaskell.Plugin:--no-verify
+                       -fplugin-opt=LiquidHaskell.Plugin:no-ghc-prim-specs,no-base-specs
+
+custom-setup
+  setup-depends:       base, Cabal, liquidhaskell
 
