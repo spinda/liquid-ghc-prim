@@ -2,13 +2,13 @@
 
 {-# LANGUAGE MagicHash #-}
 {-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE PackageImports #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module GHC.Prim (module GHC.Prim) where
+module Liquid.GHC.Prim (module GHC.Prim) where
 
-import "ghc-prim" GHC.Prim
 import LiquidHaskell
+
+import GHC.Prim
 
 [lq| embed Int# as int |]
 

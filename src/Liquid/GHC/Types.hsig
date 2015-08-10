@@ -3,16 +3,19 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE MagicHash #-}
 {-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE PackageImports #-}
 {-# LANGUAGE QuasiQuotes #-}
 
-module GHC.Types (module GHC.Types) where
+module Liquid.GHC.Types (module GHC.Types) where
 
-import "ghc-prim" GHC.Types hiding (Int)
 import LiquidHaskell
 
-import GHC.Exts (Int#)
+import GHC.Types hiding (Int)
 
-data Int where
+import Liquid.GHC.Prim
+
+data Int {-@ embed as int @-} where
   I# :: [lq| x:Int# -> { v:Int | v = x } |]
+
+[lq| embed Int  as int |]
+[lq| embed Bool as bool |]
 
